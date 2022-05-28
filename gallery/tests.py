@@ -64,3 +64,55 @@ class CategoryTestCase(TestCase):
     self.category.delete_category()
     categorys = Category.objects.all()
     self.assertTrue(len(categorys) == 0)
+    
+#image testcase
+class ImageTestCase(TestCase):
+  #set up method
+  def setUp(self):
+    self.category = Category(name='Travel')
+    self.category.save_category()
+    
+    self.location = Location(name='somewhere')
+    self.location.save_location()
+    
+    self.image = Image(name='test',description='Image description test',category=self.category,location=self.location)
+  
+  
+  def tearDown(self):
+    Image.objects.all().delete()
+    Category.objects.all().delete()
+    Location.objects.all().delete() 
+     
+  def test_instance(self):
+    self.assertTrue(isinstance(self.image,Image))
+    
+  def test_save_method(self):
+    self.image.save_image()
+    images = Image.objects.all()
+    self.assertTrue(len(images)>0)
+    
+  def test_update_method(self):
+    self.image.save_image()
+    self.image.update_image(self.image.id,'images/test.jpg')
+    new_image = Image.objects.filter(picture='images/test.jpg')
+    self.assertTrue(len(new_image)>0)
+    
+  def test_delete_method(self):
+    self.image.delete_image()
+    images = Image.objects.all()
+    self.assertTrue(len(images)== 0)
+  
+  def test_get_image_by_id(self):
+    self.image.save_image()
+    image_found=self.image.get_image_by_id(self.image.id)
+    self.assertTrue(len(image_found)>0)
+    
+  def test_search_image_by_category(self):
+    self.image.save_image()
+    searched_image = self.image.search_by_category('Travel')
+    self.assertTrue(len(searched_image) == 1)
+    
+  def test_filter_by_location(self):
+    self.image.save_image()
+    filtered_images = self.image.filter_by_location(location='somewhere')
+    self.assertTrue(len(filtered_images) == 1)
