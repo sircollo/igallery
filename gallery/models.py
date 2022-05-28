@@ -8,3 +8,8 @@ class Image(models.Model):
   description = models.TextField()
   picture = models.ImageField(upload_to='images',default='image')
   date = models.DateTimeField(auto_now_add=True)
+  
+  def __str__(self):
+    return self.name
+  
+  
