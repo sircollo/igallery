@@ -94,7 +94,7 @@ class ImageTestCase(TestCase):
   def test_update_method(self):
     self.image.save_image()
     self.image.update_image(self.image.id,'images/test.jpg')
-    new_image = Image.objects.filter(picture='images/test.jpg')
+    new_image = Image.objects.filter(image='images/test.jpg')
     self.assertTrue(len(new_image)>0)
     
   def test_delete_method(self):
