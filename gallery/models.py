@@ -1,6 +1,6 @@
 from distutils.command.upload import upload
 from django.db import models
-
+from embed_video.fields import EmbedVideoField
 # Create your models here.
 class Location(models.Model):
   name = models.CharField(max_length=30)
@@ -77,5 +77,9 @@ class Image(models.Model):
     image_location = Image.objects.filter(location__name=location).all()
     return image_location
     
+class Video(models.Model):
+  video = EmbedVideoField()
   
+  def __str__(self):
+    return self.video
   
