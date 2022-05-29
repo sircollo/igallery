@@ -39,7 +39,7 @@ class Category(models.Model):
 class Image(models.Model):
   name = models.CharField(max_length=30)
   description = models.TextField()
-  picture = models.ImageField(upload_to='images/',default='image')
+  image = models.ImageField(upload_to='images/',default='image')
   date = models.DateTimeField(auto_now_add=True)
   location = models.ForeignKey(Location,on_delete=models.CASCADE, default='location')
   category = models.ForeignKey(Category,on_delete=models.CASCADE, default='')
@@ -56,7 +56,7 @@ class Image(models.Model):
   
   @classmethod
   def update_image(cls,id,value):
-    cls.objects.filter(id=id).update(picture=value)
+    cls.objects.filter(id=id).update(image=value)
   
 
   def delete_image(self):
@@ -69,8 +69,8 @@ class Image(models.Model):
   
   @classmethod
   def search_by_category(cls, search_term):
-      images = cls.objects.filter(category__name__icontains=search_term)
-      return images
+    images = cls.objects.filter(category__name__icontains=search_term)
+    return images
   
   @classmethod
   def filter_by_location(cls, location):
