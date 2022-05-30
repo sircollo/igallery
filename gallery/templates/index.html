@@ -21,18 +21,36 @@
   <div class="row">
         {% for image in images %}
         <div class="card m-2" style="width: 19rem;">
-          <img class="card-img-top" src="{{image.image.url}}" alt="Card image cap" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-
+          <img class="card-img-top" src="{{image.image.url}}" alt="Card image cap" class="img-responsive img-rounded" data-toggle="modal" data-target="#myModal" alt="" width="304" height="236" style="outline:0px;">
+  
         </div>
-      {% endfor %}
-    </div>
     
 
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{{image.name}}</h4>
+          </div>
+          <div class="modal-body">
+            <div class="card m-2" style="width: 19rem;">
+              <img class="card-img-top" src="{{image.image.url}}" alt="Card image cap" class="img-responsive img-rounded" data-toggle="modal" data-target="#myModal" alt="" width="304" height="236" style="outline:0px;">
+      
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    {% endfor %}
+</div>
 </div>
 
 
 {% endblock %}
-
-<!-- {% for image in images %}
-
-{% endfor %} -->
