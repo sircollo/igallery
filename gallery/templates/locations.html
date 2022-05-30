@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid bg-dark" style="margin-top:6%;">
-  <div class="row">
+<div class="container-fluid bg-dark m-3 text-center justify-content-center" >
+  <div class="row" style="margin-top:8%;">
         {% for image in images %}
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb p-2">
-          <a href="{{image.image.url}}" class="fancybox" rel="ligthbox">
-              <img  src="{{image.image.url}}" class="zoom img-fluid "  alt="" max-height="420px" width="320px">
-             
-          </a>
-      </div>
+        <div class="card m-2" style="width: 19rem;">
+          <img class="card-img-top" src="{{image.image.url}}" alt="Card image cap" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+
+        </div>
       {% endfor %}
     </div>
     
