@@ -3,8 +3,8 @@
 <div class="container-fluid bg-dark m-3 text-center justify-content-center" >
   <div class="row" style="margin-top:8%;">
         {% for image in images %}
-        <div class="card m-2" style="width: 19rem;">
-          <img class="card-img-top" src="{{image.image.url}}" alt="Card image cap" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        <div class="card m-2 thumbnails" style="width: 19rem;">
+          <img class="card-img-top" src="{{image.image.url}}" alt="Card image cap" class="img-rounded" data-toggle="modal" data-target="#myModal" alt="Cinque Terre" width="304" height="236">
 
         </div>
       {% endfor %}
