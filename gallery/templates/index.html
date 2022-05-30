@@ -1,1 +1,38 @@
-<h1>Main Page</h1>
+{% extends 'base.html' %}
+{% block content %}
+<div id="video-container">
+  <div class="video-overlay"></div>
+  <div class="video-content">
+      <div class="inner">
+        <h1>iGallery</h1>
+        <p>Explore beautiful images</p>
+          <div class="scroll-icon">
+              <a class="scrollTo" data-scrollTo="portfolio" href="#"><img src="img/scroll-icon.png" alt=""></a>
+          </div>    
+      </div>
+  </div>
+  <video autoplay="" loop="" muted>
+    <source src="media/images/backgroundVideo.mp4" type="video/mp4" />
+  </video>
+</div>
+
+
+<div class="container-fluid bg-dark m-3 text-center justify-content-center">
+  <div class="row">
+        {% for image in images %}
+        <div class="card m-2" style="width: 19rem;">
+          <img class="card-img-top" src="{{image.image.url}}" alt="Card image cap" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+
+        </div>
+      {% endfor %}
+    </div>
+    
+
+</div>
+
+
+{% endblock %}
+
+<!-- {% for image in images %}
+
+{% endfor %} -->
