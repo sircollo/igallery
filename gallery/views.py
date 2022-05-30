@@ -19,3 +19,14 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+    
+DoesNotExist = False  
+def filter_location(request,location_id):
+    try:
+        locations = {'1':"Moscow",'2':"Tokyo",'3':"Cairo",'4':"Nairobi",'5':"England",'6':"China"}    
+        filtered_images = Image.objects.filter(location__name__icontains=locations.get(str(location_id))) 
+        message = f"{locations.get(location_id)}"
+    except  DoesNotExist:
+         raise Http404()
+    return render(request,'locations.html',{"message":message,"images": filtered_images})
+
