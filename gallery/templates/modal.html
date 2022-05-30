@@ -1,0 +1,27 @@
+{% for image in images %}
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{{image.name}}</h4>
+          </div>
+          <div class="modal-body">
+            <div class="card m-2">
+              <img class="card-img-top" src="{{image.image.url}}" alt="" class="img-responsive"alt="" width="500" height="350" style="outline:0px;">
+      
+            </div>
+            <div class="modal-body">
+              <p>{{image.description}}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    {% endfor %}
